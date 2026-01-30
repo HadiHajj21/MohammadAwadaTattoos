@@ -1,36 +1,41 @@
-const scrollTo = (id) => {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
-}
+import React, { useState } from 'react';
+import '../../css/navbar.css';
 
-export default function Navbar() {
+const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav style={styles.nav}>
-      <strong>MA Tattoos</strong>
-      <div style={styles.links}>
-        <span onClick={() => scrollTo('about')}>About</span>
-        <span onClick={() => scrollTo('gallery')}>Work</span>
-        <span onClick={() => scrollTo('booking')}>Book</span>
-        <span onClick={() => scrollTo('location')}>Location</span>
+    <nav className="navbar">
+      <div className="navbar-logo">
+        LandingPage
       </div>
-    </nav>
-  )
-}
+      
+      {/* Hamburger Icon (only visible on mobile via CSS) */}
+      <div className="hamburger" onClick={toggleMenu}>
+        {/* Toggle between Hamburger (☰) and Close (✕) icons */}
+        <span className={isOpen ? "bar open" : "bar"}></span>
+        <span className={isOpen ? "bar open" : "bar"}></span>
+        <span className={isOpen ? "bar open" : "bar"}></span>
+      </div>
 
-const styles = {
-  nav: {
-    position: 'fixed',
-    top: 0,
-    width: '100%',
-    padding: '15px 40px',
-    background: '#000',
-    color: '#fff',
-    display: 'flex',
-    justifyContent: 'space-between',
-    zIndex: 1000
-  },
-  links: {
-    display: 'flex',
-    gap: 20,
-    cursor: 'pointer'
-  }
-}
+      {/* Navigation Links */}
+      <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
+        <li>
+          <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+        </li>
+        <li>
+          <a href="#location" onClick={() => setIsOpen(false)}>Location</a>
+        </li>
+        <li>
+          <a href="#background" onClick={() => setIsOpen(false)}>Background</a>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default NavBar;

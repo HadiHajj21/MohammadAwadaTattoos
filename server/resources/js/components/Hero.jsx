@@ -1,15 +1,26 @@
+import { useEffect, useState } from 'react';
+
 export default function Hero() {
+  const [heroUrl, setHeroUrl] = useState('/images/imageH.jpeg'); // fallback
+
+  useEffect(() => {
+    fetch('/storage/imageH.jpeg', { method: 'HEAD' })
+      .then(res => {
+        if (res.ok) setHeroUrl('/storage/imageH.jpeg');
+      })
+      .catch(() => {});
+  }, []);
+
   return (
-    <section style={styles.hero}>
+    <section style={{ ...styles.hero, backgroundImage: `url(${heroUrl})` }}>
       <button style={styles.button}>Book Now</button>
     </section>
-  )
+  );
 }
 
 const styles = {
   hero: {
     height: '100vh',
-    backgroundImage: 'url(/images/hero.jpg)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
@@ -24,4 +35,4 @@ const styles = {
     border: 'none',
     cursor: 'pointer'
   }
-}
+};

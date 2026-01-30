@@ -1,0 +1,120 @@
+/* 1. Basic Reset & Smooth Scroll */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Navbar Container */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* 3. Links (Desktop View) */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+}
+
+/* 4. Hamburger Icon (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+/* 5. Scroll Offset Logic */
+section {
+  scroll-margin-top: 70px;
+}
+
+/* --- MOBILE STYLES (Max-width: 768px) --- */
+@media (max-width: 768px) {
+  
+  /* Show the hamburger icon */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide the links initially, and position them absolutely */
+  .navbar-links {
+    position: absolute;
+    top: 60px; /* Directly below the navbar */
+    left: 0;
+    width: 100%;
+    flex-direction: column; /* Stack vertically */
+    background-color: white;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    gap: 0;
+    
+    /* Animation settings */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  /* When the 'active' class is added via React state, show the menu */
+  .navbar-links.active {
+    max-height: 300px; /* Large enough to fit links */
+  }
+
+  .navbar-links li {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navbar-links li:last-child {
+    border-bottom: none;
+  }
+
+  /* Optional: Hamburger Animation to 'X' */
+  .bar.open:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .bar.open:nth-child(2) {
+    opacity: 0;
+  }
+  .bar.open:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
