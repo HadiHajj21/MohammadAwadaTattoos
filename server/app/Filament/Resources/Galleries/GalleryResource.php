@@ -31,9 +31,13 @@ class GalleryResource extends Resource
         return $form->schema([
             TextInput::make('title')->required(),
             FileUpload::make('image')
-                ->directory('gallery') // stored in storage/app/public/gallery
-                ->image()
-                ->required(),
+            ->disk('r2')
+            ->directory('gallery')
+            ->visibility('public')
+            ->preserveFilenames(false)
+            ->image()
+            ->required(),
+
         ]);
     }
 

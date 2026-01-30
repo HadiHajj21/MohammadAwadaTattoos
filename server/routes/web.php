@@ -11,11 +11,13 @@ Route::get('/', function () {
 Route::get('/', fn () => view('app'));
 
 Route::get('/gallery-images', function () {
-    $files = Storage::disk('public')->files('gallery'); // storage/app/public/gallery
-    $urls = array_map(fn($file) => '/storage/' . $file, $files);
-    return response()->json($urls);
+    $images = Gallery::all()->map(function ($gallery) {
+        return Storage::disk('r2')->url($gallery->image);
+    });
+
+    return response()->json($images);
 });
 
-Route::get('/gallery-images', function() {
-    return Gallery::all()->map(fn($g) => '/storage/' . $g->image);
+Route::get('/gallery-images', function () {
+    return \App\Models\Gallery::all(); // This returns a collection of objects
 });

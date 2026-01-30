@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
+
+const R2_PUBLIC_URL = 'https://pub-d752ec4acc1b4cd8ab4972feccc02b93.r2.dev';
+const HERO_IMAGE = 'ImageH.jpeg';
 
 export default function Hero() {
-  const [heroUrl, setHeroUrl] = useState('/images/imageH.jpeg'); // fallback
-
-  useEffect(() => {
-    fetch('/storage/imageH.jpeg', { method: 'HEAD' })
-      .then(res => {
-        if (res.ok) setHeroUrl('/storage/imageH.jpeg');
-      })
-      .catch(() => {});
-  }, []);
-
   return (
-    <section style={{ ...styles.hero, backgroundImage: `url(${heroUrl})` }}>
+    <section
+      style={{
+        ...styles.hero,
+        backgroundImage: `url(${R2_PUBLIC_URL}/${HERO_IMAGE})`,
+      }}
+    >
       <button style={styles.button}>Book Now</button>
     </section>
   );
@@ -25,7 +23,7 @@ const styles = {
     backgroundPosition: 'center',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   button: {
     fontSize: 28,
@@ -33,6 +31,6 @@ const styles = {
     background: '#000',
     color: '#fff',
     border: 'none',
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 };
