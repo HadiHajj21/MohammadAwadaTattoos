@@ -12,21 +12,25 @@ export default function Hero() {
         if (!res.ok) throw new Error('Hero image not found');
         return res.json();
       })
-      .then(data => {
-        // Combines R2 URL with the path from the DB
-        setHeroUrl(`${R2_PUBLIC_URL}/${data.image}`);
-      })
+      .then(data => setHeroUrl(`${R2_PUBLIC_URL}/${data.image}`))
       .catch(err => {
         console.error(err);
         setError(true);
       });
   }, []);
 
+  const scrollToBooking = () => {
+    const element = document.getElementById('booking-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   if (error) {
     return (
       <section style={styles.fallback}>
         <h1>Mohammad Awada</h1>
-        <p>Tattoo Artist</p>
+        <button onClick={scrollToBooking} style={styles.button}>Book Now</button>
       </section>
     );
   }
@@ -39,7 +43,9 @@ export default function Hero() {
       }}
     >
       <div style={styles.overlay}>
-        <button style={styles.button}>Book Now</button>
+        <button onClick={scrollToBooking} style={styles.button}>
+          Book Now
+        </button>
       </div>
     </section>
   );
@@ -56,7 +62,7 @@ const styles = {
     position: 'relative',
   },
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.3)', // Darkens background to make button pop
+    backgroundColor: 'rgba(0,0,0,0.4)',
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -80,6 +86,7 @@ const styles = {
     border: 'none',
     fontWeight: 'bold',
     cursor: 'pointer',
-    transition: '0.3s',
+    textTransform: 'uppercase',
+    letterSpacing: '2px',
   },
 };

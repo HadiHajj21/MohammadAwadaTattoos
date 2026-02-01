@@ -29,15 +29,17 @@ class GalleryResource extends Resource
     public static function form(Schema $form): Schema
     {
         return $form->schema([
-            TextInput::make('title')->required(),
+            TextInput::make('title')
+                ->label('Location ID') 
+                ->disabled() // Makes it read-only
+                ->dehydrated(false), // Ensures it's not sent back to the DB on save
+                
             FileUpload::make('image')
-            ->disk('r2')
-            ->directory('gallery')
-            ->visibility('public')
-            ->preserveFilenames(false)
-            ->image()
-            ->required(),
-
+                ->disk('r2')
+                ->directory('gallery')
+                ->visibility('public')
+                ->image()
+                ->required(),
         ]);
     }
 
@@ -57,8 +59,18 @@ class GalleryResource extends Resource
     {
         return [
             'index' => ListGalleries::route('/'),
-            'create' => CreateGallery::route('/create'),
+            // 'create' => CreateGallery::route('/create'),
             'edit' => EditGallery::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return false;
     }
 }

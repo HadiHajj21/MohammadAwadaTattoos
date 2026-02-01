@@ -15,24 +15,27 @@ class GalleriesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->disk('r2') // Ensures thumbnails load from Cloudflare
+                    ->square(),
+                
                 TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
+                    ->sortable(),
+
                 TextColumn::make('updated_at')
+                    ->label('Last Updated')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
+            // Standard click-to-edit action
             ->recordActions([
                 EditAction::make(),
             ])
+            // We remove BulkActionGroup entirely to prevent mass deletion
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
