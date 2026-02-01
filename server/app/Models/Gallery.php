@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
-    protected $table = 'galleries'; // Ensure this matches your table name
-    protected $fillable = ['image', 'title']; // Columns allowed to be saved
+    protected $table = 'galleries';
+    protected $fillable = ['image', 'title'];
 }

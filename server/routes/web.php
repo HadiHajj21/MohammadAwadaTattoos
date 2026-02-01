@@ -1,23 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage; 
 use App\Models\Gallery;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Main View
 Route::get('/', fn () => view('app'));
 
+/**
+ * Gallery Images API
+ * Returns all images where title starts with 'Image' BUT is not 'ImageH'
+ */
 Route::get('/gallery-images', function () {
-    $images = Gallery::all()->map(function ($gallery) {
-        return Storage::disk('r2')->url($gallery->image);
-    });
-
-    return response()->json($images);
+    return Gallery::where('title', 'LIKE', 'Image%')
+        ->where('title', '!=', 'ImageH')
+        ->orderBy('created_at', 'desc')
+        ->get();
 });
 
-Route::get('/gallery-images', function () {
-    return \App\Models\Gallery::all(); // This returns a collection of objects
+/**
+ * Hero Image API
+ * Returns specifically the record named 'ImageH'
+ */
+Route::get('/hero-image', function () {
+    $hero = Gallery::where('title', 'ImageH')->first();
+
+    if (!$hero) {
+        return response()->json(['error' => 'Hero image not found'], 404);
+    }
+
+    return response()->json([
+        'image' => $hero->image, // Ensure this matches your DB column: 'image' or 'image_path'
+    ]);
 });

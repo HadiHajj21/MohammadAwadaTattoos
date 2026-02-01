@@ -20,7 +20,7 @@ class GalleryController extends Controller
 
             $gallery = Gallery::create([
                 'title' => $request->input('title', 'New Work'),
-                'image' => $path, // ✅ MATCH DB + FRONTEND
+                'image' => $path, //
             ]);
 
             return response()->json([
