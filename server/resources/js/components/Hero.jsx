@@ -8,8 +8,9 @@ export default function Hero() {
   useEffect(() => {
     fetch('/api/hero')
       .then(res => res.json())
-      .then(data => setHeroUrl(`${R2_PUBLIC_URL}/${data.image}`));
-  }, []);
+      .then(data => setHero(data.image));
+  });
+  
 
   return (
     <section
