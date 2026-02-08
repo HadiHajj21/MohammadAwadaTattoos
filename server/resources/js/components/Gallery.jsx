@@ -12,7 +12,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <section style={styles.section}>
+    <section id='gallery' style={styles.section}>
       <h2>Recent Work</h2>
 
       <div style={styles.grid}>

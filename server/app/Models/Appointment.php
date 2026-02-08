@@ -7,14 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     protected $fillable = [
-        'name',
-        'phone',
+        'first_name',
+        'last_name',
         'email',
-        'tattoo_description',
-        'size',
+        'phone',
+        'city',
+        'nation',
+        'gender',
+        'height',
+        'tattoo_type',
         'placement',
-        'reference_image',
-        'preferred_date',
-        'status',
+        'style',
+        'description',
+        'reference_images',
+        'skin_images',
+    ];
+
+    protected $casts = [
+        'reference_images' => 'array',
+        'skin_images' => 'array',
     ];
 }
