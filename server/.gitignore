@@ -1,24 +1,48 @@
+# --- System Files ---
 *.log
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+/.zed
+/.nova
+/.fleet
+
+# --- Laravel Essentials ---
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
+/vendor
 /node_modules
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+/auth.json
 Homestead.json
 Homestead.yaml
-Thumbs.db
+
+# --- Caches & Results ---
+.phpunit.result.cache
+/.phpunit.cache
+.phpactor.json
+
+# --- Storage & Livewire (Targeting your Point #3) ---
+# Ignore everything in these folders
+/storage/app/private/gallery/*
+/storage/app/livewire-tmp/*
+
+# Except the .gitignore files inside them (if you want to keep the folders in Git)
+!/storage/app/private/gallery/.gitignore
+!/storage/app/livewire-tmp/.gitignore
+
+# Ignore Framework Caches
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+
+# --- Windows Specifics ---
+desktop.ini
+$RECYCLE.BIN/

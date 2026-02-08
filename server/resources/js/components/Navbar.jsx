@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        LandingPage
+        Mohamad Aawada Tattoos
       </div>
       
       {/* Hamburger Icon (only visible on mobile via CSS) */}
@@ -31,7 +31,7 @@ const NavBar = () => {
           <a href="#location" onClick={() => setIsOpen(false)}>Location</a>
         </li>
         <li>
-          <a href="#background" onClick={() => setIsOpen(false)}>Background</a>
+          <a href="#gallery" onClick={() => setIsOpen(false)}>Background</a>
         </li>
       </ul>
     </nav>

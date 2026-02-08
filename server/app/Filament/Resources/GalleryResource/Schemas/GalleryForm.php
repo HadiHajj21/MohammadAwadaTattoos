@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Galleries\Schemas;
+namespace App\Filament\Resources\GalleryResource\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
