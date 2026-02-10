@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\AppointmentConfirmation;
+use App\Mail\NewAppointmentForArtist;
+use App\Mail\AppointmentConfirmationForClient;
 use App\Http\Controllers\Controller;
 
 class AppointmentController extends Controller
@@ -24,10 +25,10 @@ class AppointmentController extends Controller
 
         // Save to DB
         $appointment = Appointment::create($data);
+        $artistEmail = config('mail.artist_email'); // we'll add this config next
 
-        // Send email
-        Mail::to('Hadialhajj213@gmail.com')
-            ->send(new AppointmentConfirmation($appointment));
+        Mail::to($artistEmail)->send(new NewAppointmentForArtist($appointment));
+        Mail::to($appointment->email)->send(new AppointmentConfirmationForClient($appointment));
 
         return response()->json([
             'success' => true,

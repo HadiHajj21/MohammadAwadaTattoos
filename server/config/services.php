@@ -21,6 +21,11 @@ return [
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
+    
+    'artist' => [
+    'email' => env('ARTIST_EMAIL'),
+],
+
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
