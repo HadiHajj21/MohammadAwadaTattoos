@@ -12,8 +12,10 @@ class EditAppointment extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
-        ];
+        return [];
+    }
+    public function getTitle(): string
+    {
+        return 'Appointment ' . $this->record->booking_number;
     }
 }

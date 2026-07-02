@@ -1,59 +1,280 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Mohammad Awada Tattoos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern tattoo studio website built with **Laravel**, **React**, **Filament**, **MySQL**, and **Cloudflare R2**.
 
-## About Laravel
+The project allows clients to browse the artist's portfolio, submit tattoo appointment requests with reference images, while providing the artist with a professional admin panel for managing appointments.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Client Website
 
-## Learning Laravel
+- Dynamic Hero section
+- Dynamic Gallery
+- About section
+- Booking Form
+- Google Maps integration
+- Responsive design
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Booking System
 
-## Laravel Sponsors
+- Complete tattoo appointment form
+- Upload multiple reference images
+- Upload multiple skin area images
+- Form validation
+- Automatic booking number generation
+- Appointment stored in MySQL
+- Images uploaded directly to Cloudflare R2
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Admin Panel (Filament)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Secure login
+- Gallery management
+- Hero image management
+- Appointment management
+- Dynamic content editing
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Cloud Storage
 
-## Code of Conduct
+Images are stored in Cloudflare R2.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Folders:
 
-## Security Vulnerabilities
+```
+gallery/
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+appointments/
+    reference/
+    skin/
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Tech Stack
+
+## Backend
+
+- Laravel 12
+- PHP 8.3
+
+## Frontend
+
+- React
+- Vite
+
+## Database
+
+- MySQL
+
+## Admin Panel
+
+- Filament v4
+
+## Storage
+
+- Cloudflare R2
+
+## Email
+
+- Resend (integration in progress)
+
+---
+
+# Current Project Status
+
+| Feature | Status |
+|----------|--------|
+| React Frontend | ✅ |
+| Laravel Backend | ✅ |
+| Dynamic Gallery | ✅ |
+| Dynamic Hero | ✅ |
+| Booking Form | ✅ |
+| Image Upload | ✅ |
+| Cloudflare R2 | ✅ |
+| Filament Admin | ✅ |
+| Booking Number | ✅ |
+| Email Notifications | 🚧 |
+| Appointment Dashboard | 🚧 |
+| Deployment | 🚧 |
+| SEO | 🚧 |
+
+---
+
+# Folder Structure
+
+```
+server/
+
+app/
+
+Http/
+
+Controllers/
+
+Models/
+
+Services/
+
+Mail/
+
+Filament/
+
+resources/
+
+js/
+
+components/
+
+pages/
+
+views/
+
+routes/
+
+database/
+
+storage/
+```
+
+---
+
+# Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/MohammadAwadaTattoos.git
+```
+
+Install PHP dependencies
+
+```bash
+composer install
+```
+
+Install JavaScript dependencies
+
+```bash
+npm install
+```
+
+Copy environment
+
+```bash
+cp .env.example .env
+```
+
+Generate application key
+
+```bash
+php artisan key:generate
+```
+
+Run migrations
+
+```bash
+php artisan migrate
+```
+
+Start Laravel
+
+```bash
+php artisan serve
+```
+
+Start Vite
+
+```bash
+npm run dev
+```
+
+---
+
+# Environment Variables
+
+Required services:
+
+- MySQL
+- Cloudflare R2
+- Resend
+
+Example:
+
+```
+DB_CONNECTION=mysql
+
+FILESYSTEM_DISK=r2
+
+MAIL_MAILER=resend
+
+RESEND_API_KEY=
+
+R2_ACCESS_KEY_ID=
+
+R2_SECRET_ACCESS_KEY=
+
+R2_BUCKET=
+
+R2_ENDPOINT=
+
+R2_URL=
+```
+
+---
+
+# Roadmap
+
+## Phase 1
+
+- Website
+- Gallery
+- Hero
+- Booking Form
+
+Completed
+
+---
+
+## Phase 2
+
+- Backend
+- Cloudflare R2
+- Appointment System
+
+Completed
+
+---
+
+## Phase 3
+
+- Filament Appointment Dashboard
+- Email Notifications
+- Artist Workflow
+
+In Progress
+
+---
+
+## Phase 4
+
+- Deployment
+- SEO
+- Performance
+- Analytics
+
+Planned
+
+---
+
+# License
+
+Private project.
+
+© Mohammad Awada Tattoos
