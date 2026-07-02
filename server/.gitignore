@@ -46,3 +46,22 @@ Homestead.yaml
 # --- Windows Specifics ---
 desktop.ini
 $RECYCLE.BIN/
+
+/vendor
+/node_modules
+
+.env
+
+/public/build
+
+/storage/*.key
+
+/storage/logs/*.log
+
+/bootstrap/cache/*.php
+
+/.idea
+/.vscode
+
+npm-debug.log
+yarn-error.log

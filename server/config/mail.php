@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -116,8 +116,8 @@ return [
     ],
 
     'reply_to' => [
-        'address' => env('MAIL_FROM_ADDRESS'),
-        'name' => env('MAIL_FROM_NAME'),
+        'address' => env('MAIL_REPLY_TO_ADDRESS'),
+        'name' => env('MAIL_REPLY_TO_NAME'),
     ],
 
 ];
