@@ -1,8 +1,14 @@
 # Mohammad Awada Tattoos
 
-A modern tattoo studio website built with **Laravel**, **React**, **Filament**, **MySQL**, and **Cloudflare R2**.
+A full-stack tattoo studio booking and management system built specifically for a professional tattoo artist.
 
-The project allows clients to browse the artist's portfolio, submit tattoo appointment requests with reference images, while providing the artist with a professional admin panel for managing appointments.
+---
+
+# Project Overview
+
+Mohammad Awada Tattoos is a modern web application that allows clients to submit tattoo appointment requests online while giving the artist a dedicated administration panel to review, manage, and organize bookings.
+
+The project focuses on creating a professional workflow rather than a simple contact form.
 
 ---
 
@@ -10,271 +16,131 @@ The project allows clients to browse the artist's portfolio, submit tattoo appoi
 
 ## Client Website
 
-- Dynamic Hero section
-- Dynamic Gallery
-- About section
-- Booking Form
-- Google Maps integration
-- Responsive design
+- Responsive React single-page application
+- Hero section managed from the admin panel
+- Gallery managed dynamically
+- Online appointment booking
+- Multiple reference image uploads
+- Multiple skin image uploads
+- Client-side validation
+- Smooth scrolling interface
 
 ---
-
-## Booking System
-
-- Complete tattoo appointment form
-- Upload multiple reference images
-- Upload multiple skin area images
-- Form validation
-- Automatic booking number generation
-- Appointment stored in MySQL
-- Images uploaded directly to Cloudflare R2
-
----
-
-## Admin Panel (Filament)
-
-- Secure login
-- Gallery management
-- Hero image management
-- Appointment management
-- Dynamic content editing
-
----
-
-## Cloud Storage
-
-Images are stored in Cloudflare R2.
-
-Folders:
-
-```
-gallery/
-
-appointments/
-    reference/
-    skin/
-```
-
----
-
-# Tech Stack
 
 ## Backend
 
-- Laravel 12
-- PHP 8.3
+- Laravel REST API
+- MySQL database
+- Appointment management
+- Booking number generation
+- Validation
+- Cloudflare R2 integration
+- Image upload handling
 
-## Frontend
-
-- React
-- Vite
-
-## Database
-
-- MySQL
+---
 
 ## Admin Panel
 
-- Filament v4
+Built with Filament 5.
 
-## Storage
+Features include:
 
-- Cloudflare R2
-
-## Email
-
-- Resend (integration in progress)
-
----
-
-# Current Project Status
-
-| Feature | Status |
-|----------|--------|
-| React Frontend | ✅ |
-| Laravel Backend | ✅ |
-| Dynamic Gallery | ✅ |
-| Dynamic Hero | ✅ |
-| Booking Form | ✅ |
-| Image Upload | ✅ |
-| Cloudflare R2 | ✅ |
-| Filament Admin | ✅ |
-| Booking Number | ✅ |
-| Email Notifications | 🚧 |
-| Appointment Dashboard | 🚧 |
-| Deployment | 🚧 |
-| SEO | 🚧 |
+- Appointment management
+- Gallery management
+- Booking status updates
+- Artist notes
+- Cloudflare R2 image previews
+- Search & filtering
+- Booking number management
 
 ---
 
-# Folder Structure
+# Technologies
 
-```
-server/
+Frontend
 
-app/
+- React
+- Vite
+- JavaScript
 
-Http/
+Backend
 
-Controllers/
-
-Models/
-
-Services/
-
-Mail/
-
-Filament/
-
-resources/
-
-js/
-
-components/
-
-pages/
-
-views/
-
-routes/
-
-database/
-
-storage/
-```
-
----
-
-# Installation
-
-Clone the repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/MohammadAwadaTattoos.git
-```
-
-Install PHP dependencies
-
-```bash
-composer install
-```
-
-Install JavaScript dependencies
-
-```bash
-npm install
-```
-
-Copy environment
-
-```bash
-cp .env.example .env
-```
-
-Generate application key
-
-```bash
-php artisan key:generate
-```
-
-Run migrations
-
-```bash
-php artisan migrate
-```
-
-Start Laravel
-
-```bash
-php artisan serve
-```
-
-Start Vite
-
-```bash
-npm run dev
-```
-
----
-
-# Environment Variables
-
-Required services:
-
+- Laravel 12
+- PHP 8.3
 - MySQL
+
+Storage
+
 - Cloudflare R2
-- Resend
 
-Example:
+Admin Panel
 
-```
-DB_CONNECTION=mysql
-
-FILESYSTEM_DISK=r2
-
-MAIL_MAILER=resend
-
-RESEND_API_KEY=
-
-R2_ACCESS_KEY_ID=
-
-R2_SECRET_ACCESS_KEY=
-
-R2_BUCKET=
-
-R2_ENDPOINT=
-
-R2_URL=
-```
+- Filament 5
 
 ---
 
-# Roadmap
+# Current Progress
 
-## Phase 1
+## Backend
 
-- Website
-- Gallery
-- Hero
-- Booking Form
+- ✅ REST API
+- ✅ Appointment booking
+- ✅ Booking numbers
+- ✅ Image uploads
+- ✅ Cloudflare R2 integration
 
-Completed
+## Frontend
 
----
+- ✅ Landing page
+- ✅ Gallery
+- ✅ Booking form
+- ✅ API integration
 
-## Phase 2
+## Administration
 
-- Backend
-- Cloudflare R2
-- Appointment System
-
-Completed
-
----
-
-## Phase 3
-
-- Filament Appointment Dashboard
-- Email Notifications
-- Artist Workflow
-
-In Progress
+- ✅ Appointment management
+- ✅ Gallery management
+- ✅ Image previews
+- ✅ Booking workflow
 
 ---
 
-## Phase 4
+# Planned Improvements
 
-- Deployment
-- SEO
-- Performance
-- Analytics
-
-Planned
+- Dashboard analytics
+- Email notifications using Resend
+- Appointment timeline
+- Calendar scheduling
+- Revenue statistics
+- Client history
+- Production deployment
 
 ---
 
-# License
+# Screenshots
 
-Private project.
+(Add screenshots here once the project is complete.)
 
-© Mohammad Awada Tattoos
+---
+
+# Project Status
+
+This project has evolved from a university-style booking website into a production-oriented management system for a real tattoo studio.
+
+Current estimated completion:
+
+- Backend: 95%
+- Frontend: 90%
+- Administration Panel: 80%
+
+The remaining work primarily focuses on user experience improvements, dashboard analytics, email notifications, and deployment.
+
+---
+
+# Author
+
+Developed by Hadi Al Hajj
+
+Computer Science Graduate
+
+Lebanon
