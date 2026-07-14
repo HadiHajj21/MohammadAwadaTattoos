@@ -51,6 +51,8 @@ $RECYCLE.BIN/
 /node_modules
 
 .env
+.env.*
+!.env.example
 
 /public/build
 
