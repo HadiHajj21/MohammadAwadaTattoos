@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Services;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentConfirmationForClient;
+use App\Mail\NewAppointmentForArtist;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
@@ -54,6 +57,10 @@ class AppointmentService
         $appointment->save();
 
         $appointment->refresh();
+        
+        Mail::send(new AppointmentConfirmationForClient($appointment));
+        Mail::send(new NewAppointmentForArtist($appointment));
+
 
         return $appointment;
     }
