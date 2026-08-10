@@ -3,13 +3,14 @@
 namespace App\Filament\Resources\Appointments\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class AppointmentForm
 {
@@ -30,11 +31,11 @@ class AppointmentForm
 
                                 Select::make('status')
                                     ->options([
-                                        'Pending' => 'Pending',
-                                        'Approved' => 'Approved',
-                                        'Rejected' => 'Rejected',
-                                        'Completed' => 'Completed',
-                                        'Cancelled' => 'Cancelled',
+                                        'pending' => 'Pending',
+                                        'approved' => 'Approved',
+                                        'rejected' => 'Rejected',
+                                        'completed' => 'Completed',
+                                        'cancelled' => 'Cancelled',
                                     ])
                                     ->required(),
 
@@ -123,42 +124,84 @@ class AppointmentForm
                     ]),
 
                 Section::make('🖼 Reference Images')
-                    ->schema([
+                ->schema([
+                    Placeholder::make('reference_images_preview')
+                        ->label('')
+                        ->content(function ($record) {
+                            if (!$record || empty($record->reference_image_urls)) {
+                                return 'No reference images.';
+                            }
 
-                        FileUpload::make('reference_images')
-                            ->disk('r2')
-                            ->multiple()
-                            ->image()
-                            ->disabled()
-                            ->openable()
-                            ->downloadable(false)
-                            ->reorderable(false)
-                            ->appendFiles(false)
-                            ->dehydrated(false)
-                            ->panelLayout('grid')
-                            ->imagePreviewHeight('250')
-                            ->columnSpanFull(),
+                            $images = collect($record->reference_image_urls)
+                                ->map(function ($url) {
+                                    return '
+                                        <a href="' . e($url) . '" target="_blank" rel="noopener noreferrer">
+                                            <img
+                                                src="' . e($url) . '"
+                                                alt="Reference image"
+                                                style="
+                                                    width: 250px;
+                                                    height: 250px;
+                                                    object-fit: cover;
+                                                    border-radius: 12px;
+                                                    border: 1px solid rgba(255,255,255,0.1);
+                                                "
+                                            >
+                                        </a>
+                                    ';
+                                })
+                                ->implode('');
 
-                    ]),
+                            return new HtmlString(
+                                '<div style="
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 16px;
+                                ">' . $images . '</div>'
+                            );
+                        })
+                        ->columnSpanFull(),
+                ]),
 
                 Section::make('🩹 Skin Images')
-                    ->schema([
+                ->schema([
+                    Placeholder::make('skin_images_preview')
+                        ->label('')
+                        ->content(function ($record) {
+                            if (!$record || empty($record->skin_image_urls)) {
+                                return 'No skin images.';
+                            }
 
-                        FileUpload::make('skin_images')
-                            ->disk('r2')
-                            ->multiple()
-                            ->image()
-                            ->disabled()
-                            ->openable()
-                            ->downloadable(false)
-                            ->reorderable(false)
-                            ->appendFiles(false)
-                            ->dehydrated(false)
-                            ->panelLayout('grid')
-                            ->imagePreviewHeight('250')
-                            ->columnSpanFull(),
+                            $images = collect($record->skin_image_urls)
+                                ->map(function ($url) {
+                                    return '
+                                        <a href="' . e($url) . '" target="_blank" rel="noopener noreferrer">
+                                            <img
+                                                src="' . e($url) . '"
+                                                alt="Skin image"
+                                                style="
+                                                    width: 250px;
+                                                    height: 250px;
+                                                    object-fit: cover;
+                                                    border-radius: 12px;
+                                                    border: 1px solid rgba(255,255,255,0.1);
+                                                "
+                                            >
+                                        </a>
+                                    ';
+                                })
+                                ->implode('');
 
-                    ]),
+                            return new HtmlString(
+                                '<div style="
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 16px;
+                                ">' . $images . '</div>'
+                            );
+                        })
+                        ->columnSpanFull(),
+                ]),
 
                 Section::make('📝 Artist Notes')
                     ->schema([

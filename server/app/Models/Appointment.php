@@ -39,6 +39,9 @@ class Appointment extends Model
         'status',
 
         'notes',
+        'contacted_at',
+        'scheduled_at',
+        'completed_at',
     ];
 
     protected $casts = [
