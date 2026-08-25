@@ -1,120 +1,303 @@
-/* 1. Basic Reset & Smooth Scroll */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* =========================================
+   NAVBAR — LUXURY FLOATING ISLAND
+========================================= */
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* 2. Navbar Container */
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  padding: 0 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+
+    pointer-events: none;
 }
+
+.navbar-island {
+    pointer-events: auto;
+
+    width: min(900px, calc(100% - 48px));
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    background: rgba(10, 9, 8, 0.72);
+    border: 1px solid rgba(198, 161, 91, 0.22);
+
+    border-radius: 999px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* =========================================
+   LOGO
+========================================= */
 
 .navbar-logo {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #333;
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
 }
 
-/* 3. Links (Desktop View) */
+.logo-placeholder {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #c6a15b;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    border: 1px solid rgba(198, 161, 91, 0.5);
+    border-radius: 50%;
+}
+
+/*
+   Later:
+   Replace .logo-placeholder with
+   Mohammad's actual logo.
+*/
+
+/* =========================================
+   LINKS
+========================================= */
+
 .navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 42px;
+
+    flex: 1;
+
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-links a {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  transition: color 0.3s ease;
+    position: relative;
+
+    color: #e8e4dc;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.navbar-links a::after {
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: #c6a15b;
+
+    transition: width 0.3s ease;
 }
 
 .navbar-links a:hover {
-  color: #007bff;
+    color: #e0c27a;
 }
 
-/* 4. Hamburger Icon (Hidden on Desktop) */
-.hamburger {
-  display: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.bar {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  transition: all 0.3s ease;
-}
-
-/* 5. Scroll Offset Logic */
-section {
-  scroll-margin-top: 70px;
-}
-
-/* --- MOBILE STYLES (Max-width: 768px) --- */
-@media (max-width: 768px) {
-  
-  /* Show the hamburger icon */
-  .hamburger {
-    display: flex;
-  }
-
-  /* Hide the links initially, and position them absolutely */
-  .navbar-links {
-    position: absolute;
-    top: 60px; /* Directly below the navbar */
-    left: 0;
+.navbar-links a:hover::after {
     width: 100%;
-    flex-direction: column; /* Stack vertically */
-    background-color: white;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
-    gap: 0;
-    
-    /* Animation settings */
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-  }
+}
 
-  /* When the 'active' class is added via React state, show the menu */
-  .navbar-links.active {
-    max-height: 300px; /* Large enough to fit links */
-  }
+/* =========================================
+   DARK MODE
+========================================= */
 
-  .navbar-links li {
-    text-align: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
+.dark-mode-toggle {
+    width: 42px;
+    height: 42px;
 
-  .navbar-links li:last-child {
-    border-bottom: none;
-  }
+    border: 1px solid rgba(198, 161, 91, 0.25);
+    border-radius: 50%;
 
-  /* Optional: Hamburger Animation to 'X' */
-  .bar.open:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .bar.open:nth-child(2) {
+    background: rgba(255, 255, 255, 0.04);
+
+    color: #c6a15b;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background: rgba(198, 161, 91, 0.12);
+    border-color: rgba(198, 161, 91, 0.5);
+    transform: rotate(15deg);
+}
+
+.mode-icon {
+    font-size: 18px;
+}
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.hamburger {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(198, 161, 91, 0.25);
+    border-radius: 50%;
+
+    background: transparent;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 17px;
+    height: 1px;
+
+    background: #e8e4dc;
+
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
     opacity: 0;
-  }
-  .bar.open:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        top: 14px;
+    }
+
+    .navbar-island {
+        width: calc(100% - 28px);
+        height: 62px;
+
+        padding: 0 10px;
+    }
+
+    .navbar-links {
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        padding: 0;
+
+        background: rgba(10, 9, 8, 0.94);
+
+        border: 1px solid rgba(198, 161, 91, 0.2);
+        border-radius: 24px;
+
+        backdrop-filter: blur(20px);
+
+        max-height: 0;
+        overflow: hidden;
+
+        transition:
+            max-height 0.4s ease,
+            padding 0.4s ease;
+    }
+
+    .navbar-links.active {
+        max-height: 260px;
+        padding: 10px 0;
+    }
+
+    .navbar-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-links a {
+        display: block;
+        padding: 17px;
+    }
+
+    .dark-mode-toggle {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }

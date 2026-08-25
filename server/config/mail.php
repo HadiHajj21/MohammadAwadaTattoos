@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'artist_email' => env('mohammadawadatattoos@gmail.com'),
+    'artist_email' => env('ARTIST_EMAIL'),
     'default' => env('MAIL_MAILER', 'smtp'),
 
     /*

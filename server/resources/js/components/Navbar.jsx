@@ -1,41 +1,76 @@
 import { useState } from 'react';
 import '../../css/Navbar.css';
 
-const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [darkMode, setDarkMode] = useState(true);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+        document.documentElement.classList.toggle('light-mode');
+    };
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        Mohamad Aawada Tattoos
-      </div>
-      
-      {/* Hamburger Icon (only visible on mobile via CSS) */}
-      <div className="hamburger" onClick={toggleMenu}>
-        {/* Toggle between Hamburger (☰) and Close (✕) icons */}
-        <span className={isOpen ? "bar open" : "bar"}></span>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-        <span className={isOpen ? "bar open" : "bar"}></span>
-      </div>
+    const closeMenu = () => {
+        setIsOpen(false);
+    };
 
-      {/* Navigation Links */}
-      <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
-        <li>
-          <a href="#about" onClick={() => setIsOpen(false)}>About</a>
-        </li>
-        <li>
-          <a href="#location" onClick={() => setIsOpen(false)}>Location</a>
-        </li>
-        <li>
-          <a href="#gallery" onClick={() => setIsOpen(false)}>Background</a>
-        </li>
-      </ul>
-    </nav>
-  );
+    return (
+        <nav className="navbar">
+            <div className="navbar-island">
+
+                {/* Logo placeholder */}
+                <a href="/" className="navbar-logo" aria-label="Mohammad Awada Tattoos">
+                    <span className="logo-placeholder">
+                        MA
+                    </span>
+                </a>
+
+                {/* Desktop navigation */}
+                <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
+                    <li>
+                        <a href="#about" onClick={closeMenu}>
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#location" onClick={closeMenu}>
+                            Location
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#gallery" onClick={closeMenu}>
+                            Gallery
+                        </a>
+                    </li>
+                </ul>
+
+                {/* Dark mode */}
+                <button
+                    className="dark-mode-toggle"
+                    onClick={toggleDarkMode}
+                    aria-label="Toggle dark mode"
+                >
+                    <span className="mode-icon">
+                        {darkMode ? '☾' : '☀'}
+                    </span>
+                </button>
+
+                {/* Mobile menu */}
+                <button
+                    className={`hamburger ${isOpen ? 'open' : ''}`}
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle navigation"
+                >
+                    <span />
+                    <span />
+                    <span />
+                </button>
+
+            </div>
+        </nav>
+    );
 };
 
-export default NavBar;
+export default Navbar;

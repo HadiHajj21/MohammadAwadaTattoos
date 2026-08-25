@@ -1,0 +1,437 @@
+/* =====================================================
+   LOCATION / STUDIO
+===================================================== */
+
+.location-section {
+    position: relative;
+
+    padding: 170px clamp(24px, 8vw, 130px);
+
+    background: var(--obsidian);
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   ATMOSPHERE
+===================================================== */
+
+.location-section::before {
+    content: '';
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    right: -350px;
+    bottom: -350px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(198, 161, 91, 0.07),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.location-header {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 700px;
+
+    margin: 0 auto 80px;
+
+    text-align: center;
+}
+
+.location-eyebrow {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.3em;
+}
+
+.location-eyebrow span {
+    width: 35px;
+    height: 1px;
+
+    background: var(--gold);
+
+    opacity: 0.6;
+}
+
+.location-header h2 {
+    margin: 0;
+
+    color: var(--ivory);
+
+    font-family:
+        Georgia,
+        'Times New Roman',
+        serif;
+
+    font-size: clamp(60px, 7vw, 94px);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    letter-spacing: -0.05em;
+}
+
+.location-header h2 em {
+    color: var(--gold);
+
+    font-style: italic;
+}
+
+.location-header p {
+    max-width: 500px;
+
+    margin: 28px auto 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
+
+.location-layout {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns: 1.6fr 0.7fr;
+
+    max-width: 1400px;
+
+    min-height: 570px;
+
+    margin: 0 auto;
+
+    border:
+        1px solid
+        var(--border-gold);
+}
+
+
+/* =====================================================
+   MAP
+===================================================== */
+
+.location-map {
+    position: relative;
+
+    min-height: 570px;
+
+    overflow: hidden;
+
+    background: #111;
+}
+
+.location-map iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 570px;
+
+    border: 0;
+
+    filter:
+        grayscale(1)
+        contrast(1.1)
+        brightness(0.65);
+
+    transition:
+        filter 0.6s ease,
+        transform 0.8s ease;
+}
+
+.location-map:hover iframe {
+    filter:
+        grayscale(0.75)
+        contrast(1.05)
+        brightness(0.72);
+
+    transform: scale(1.015);
+}
+
+
+/* =====================================================
+   MAP LABEL
+===================================================== */
+
+.map-overlay {
+    position: absolute;
+
+    left: 25px;
+    bottom: 25px;
+
+    padding: 12px 16px;
+
+    background:
+        rgba(10, 9, 8, 0.82);
+
+    border:
+        1px solid
+        rgba(198, 161, 91, 0.25);
+
+    backdrop-filter: blur(10px);
+
+    color: var(--gold);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   INFORMATION PANEL
+===================================================== */
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+
+    padding: 55px 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #15130f,
+            #0d0c0a
+        );
+}
+
+.location-number {
+    margin-bottom: auto;
+
+    color: var(--gold);
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+}
+
+.location-info h3 {
+    margin: 80px 0 30px;
+
+    color: var(--ivory);
+
+    font-family:
+        Georgia,
+        'Times New Roman',
+        serif;
+
+    font-size: clamp(40px, 4vw, 60px);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    letter-spacing: -0.04em;
+}
+
+.location-info h3 em {
+    color: var(--gold);
+
+    font-style: italic;
+}
+
+.location-divider {
+    width: 100%;
+    height: 1px;
+
+    margin-bottom: 30px;
+
+    background:
+        var(--border-gold);
+}
+
+.location-detail {
+    margin-bottom: 25px;
+}
+
+.location-detail span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+}
+
+.location-detail p {
+    margin: 0;
+
+    color: var(--ivory);
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   DIRECTIONS
+===================================================== */
+
+.location-directions {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: auto;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        var(--border-gold);
+
+    color: var(--gold);
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    transition:
+        color 0.3s ease;
+}
+
+.location-directions strong {
+    font-size: 20px;
+
+    font-weight: 400;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.location-directions:hover {
+    color: var(--gold-light);
+}
+
+.location-directions:hover strong {
+    transform: translate(5px, -5px);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .location-section {
+        padding: 120px 5vw;
+    }
+
+    .location-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .location-map,
+    .location-map iframe {
+        min-height: 450px;
+    }
+
+    .location-info {
+        min-height: 450px;
+    }
+
+    .location-info h3 {
+        margin-top: 40px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .location-section {
+        padding: 100px 18px;
+    }
+
+    .location-header {
+        margin-bottom: 50px;
+    }
+
+    .location-header h2 {
+        font-size: 58px;
+    }
+
+    .location-header p {
+        font-size: 14px;
+    }
+
+    .location-map,
+    .location-map iframe {
+        min-height: 350px;
+    }
+
+    .location-info {
+        min-height: 400px;
+
+        padding: 35px 28px;
+    }
+
+    .location-info h3 {
+        margin-top: 35px;
+
+        font-size: 48px;
+    }
+
+    .map-overlay {
+        display: none;
+    }
+}
